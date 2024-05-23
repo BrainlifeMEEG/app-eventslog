@@ -18,6 +18,9 @@ with open('config.json') as config_json:
 data_file = config['mne']
 raw = mne.io.read_raw_fif(data_file,verbose=False)
 
+
+events = mne.find_events(raw)
+'''
 events = mne.find_events(raw,stim_channel=config['stim_channel'],
                             output=config['output'],
                             consecutive=config['consecutive'],
@@ -27,6 +30,7 @@ events = mne.find_events(raw,stim_channel=config['stim_channel'],
                             uint_cast=config['uint_cast'],
                             mask_type=config['mask_type'],
                             initial_event=config['initial_event'])
+'''
 
 events = mne.pick_events(events,include=config['include'],exclude=config['exclude'])
 
