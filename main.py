@@ -40,6 +40,7 @@ report.add_events(events=events, title='Events',sfreq=raw.info['sfreq'])
 
 fig = mne.viz.plot_events(events, sfreq=raw.info['sfreq'],
                           first_samp=raw.first_samp)
+# TODO: save figure
     
 _events_tsv(events, np.repeat(0.,events.shape[0]), raw, 'out_dir/events.tsv', trial_type=None, overwrite=True)
 
