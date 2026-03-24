@@ -33,7 +33,6 @@ from brainlife_utils import (
     add_image_to_product,
     add_info_to_product
 )
-from brainlife_utils.report import make_report_events
 
 
 # set up environment
@@ -56,7 +55,9 @@ _events_tsv(events, np.repeat(0., events.shape[0]), raw, 'out_dir/events.tsv',
             trial_type=None, overwrite=True)
 
 # generate report
-report = make_report_events(events, raw.info)
+report = mne.Report(title="Events Report")
+
+report.add_events(events, sfreq=raw.info['sfreq'], first_samp=raw.first_samp, title="Detected Events")
 
 
 # save report
